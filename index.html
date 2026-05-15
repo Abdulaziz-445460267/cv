@@ -4,215 +4,239 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdulaziz Almania - CV</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #212529;
-            --text-muted: #6c757d;
-            --primary-color: #0077b5;
-            --primary-hover: #005582;
-            --border-color: #e9ecef;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #0077b5;
+            --primary-light: #4dabf7;
+            --bg-color: #f0f2f5;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --accent: #6c5ce7;
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
         }
 
         [data-theme="dark"] {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #f8f9fa;
-            --text-muted: #a0a0a0;
-            --border-color: #2d2d2d;
-            --shadow: 0 4px 12px rgba(0,0,0,0.4);
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding-bottom: 60px;
-            transition: background-color var(--transition), color var(--transition);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Decorative Background Orbs */
+        .orb {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 10s infinite alternate;
+        }
+        .orb-1 { background: var(--primary); top: -100px; right: -100px; }
+        .orb-2 { background: var(--accent); bottom: -100px; left: -100px; animation-delay: -5s; }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(30px, 50px); }
         }
 
         header {
             display: flex;
             justify-content: flex-end;
-            gap: 12px;
+            gap: 15px;
             padding: 20px 5%;
             position: sticky;
             top: 0;
-            background-color: var(--bg-color);
+            backdrop-filter: blur(10px);
             z-index: 1000;
         }
 
         .btn-toggle {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
             padding: 10px 20px;
-            border-radius: 12px;
+            border-radius: 15px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
             box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
 
         .container {
-            max-width: 850px;
-            margin: 20px auto;
+            max-width: 800px;
+            margin: 40px auto;
             padding: 0 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .profile-card {
-            background-color: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px 30px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--primary-color);
-            margin-bottom: 24px;
-            background-color: #eee;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            margin-bottom: 25px;
+            transition: 0.5s;
+        }
+
+        .profile-img:hover {
+            transform: rotate(5deg) scale(1.05);
         }
 
         .profile-name {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .profile-title {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
             color: var(--text-muted);
-        }
-
-        /* Phone Fixed Logic */
-        .phone-wrapper {
-            unicode-bidi: isolate;
-            direction: ltr !important;
-            display: inline-block;
         }
 
         .btn-linkedin {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background-color: var(--primary-color);
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             text-decoration: none;
-            padding: 14px 32px;
+            padding: 15px 35px;
             border-radius: 50px;
             font-weight: 600;
+            transition: 0.3s;
             box-shadow: 0 10px 20px rgba(0, 119, 181, 0.2);
         }
 
+        .btn-linkedin:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0, 119, 181, 0.3);
+        }
+
         .section {
-            background-color: var(--card-bg);
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 25px;
+            padding: 40px;
             margin-bottom: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
         }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-
-        html[dir="rtl"] .section-title::after {
-            left: auto;
-            right: 0;
-        }
-
-        /* --- THE MAGIC FIX FOR CERTIFICATES --- */
-        .badges-grid {
             display: flex;
-            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 25px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .badge-container {
-            background-color: #ffffff; 
-            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
             border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
-            min-width: 180px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: 0.3s;
         }
 
-        /* Dark Mode Override for Credly Iframe */
-        [data-theme="dark"] .badge-container {
-            background-color: #1e1e1e !important; 
-            border-color: #444;
+        .badge-container:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--primary);
         }
 
-        [data-theme="dark"] .badge-container iframe,
-        [data-theme="dark"] .badge-container div[data-share-badge-id] {
-            filter: invert(0.9) hue-rotate(180deg) !important;
-            mix-blend-mode: screen;
-        }
-        /* --- END OF FIX --- */
+        /* Animation for icons */
+        .phone-wrapper { unicode-bidi: isolate; direction: ltr !important; display: inline-block; }
 
         @media (max-width: 600px) {
-            .profile-card { padding: 30px 20px; }
             .profile-name { font-size: 1.8rem; }
+            .container { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
     <header>
         <button class="btn-toggle" id="lang-toggle">العربية</button>
@@ -220,14 +244,13 @@
     </header>
 
     <div class="container">
-        <!-- Profile Section -->
         <div class="profile-card">
             <img src="me.jpg" 
                  onerror="this.onerror=null; this.src='https://media.licdn.com/dms/image/v2/D4D03AQG5bLYPHhgxeA/profile-displayphoto-crop_800_800/B4DZ4slAvZH4AM-/0/1778864361201?e=1780531200&v=beta&t=hXGJtcfLPJzslv3gzSQRFRSFJLPMJrLXuk0CQSb2xKg'" 
                  alt="Abdulaziz Almania" class="profile-img">
             
             <h1 class="profile-name" id="name">Abdulaziz Mohammed Almania</h1>
-            <p class="profile-title" id="title">Computer Science Student</p>
+            <p style="font-weight: 500; font-size: 1.2rem; opacity: 0.9;" id="title">Computer Science Student</p>
             
             <div class="contact-info">
                 <span id="location">📍 Shaqra University</span>
@@ -237,18 +260,16 @@
             <a href="https://www.linkedin.com/in/abdulaziz-almania-609916400/" target="_blank" class="btn-linkedin">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 <span id="btn-text">Connect on LinkedIn</span>
-            </a
+            </a>
         </div>
 
-        <!-- About Me Section -->
         <div class="section">
             <h2 class="section-title" id="about-heading">About Me</h2>
-            <p id="about-desc">
-                An ambitious bachelor's student majoring in Computer Science at Shaqra University. Passionate about problem-solving and building digital solutions, I have a programming background in Python as well as developing and designing modern web applications. I always strive to develop my skills and acquire professional certifications that support my career path.
+            <p id="about-desc" style="font-weight: 300; font-size: 1.1rem; line-height: 1.8;">
+                An ambitious bachelor's student majoring in Computer Science at Shaqra University. Passionate about problem-solving and building digital solutions, I have a programming background in Python as well as developing and designing modern web applications.
             </p>
         </div>
 
-        <!-- Certificates Section -->
         <div class="section">
             <h2 class="section-title" id="badges-heading">Certificates & Badges</h2>
             <div class="badges-grid">
@@ -275,7 +296,7 @@
                 title: "Computer Science Student",
                 btnText: "Connect on LinkedIn",
                 aboutHeading: "About Me",
-                aboutDesc: "An ambitious bachelor's student majoring in Computer Science at Shaqra University. Passionate about problem-solving and building digital solutions, I have a programming background in Python as well as developing and designing modern web applications. I always strive to develop my skills and acquire professional certifications that support my career path.",
+                aboutDesc: "An ambitious bachelor's student majoring in Computer Science at Shaqra University. Passionate about problem-solving and building digital solutions, I have a programming background in Python as well as developing and designing modern web applications.",
                 badgesHeading: "Certificates & Badges",
                 langBtn: "العربية",
                 location: "📍 Shaqra University"
@@ -285,7 +306,7 @@
                 title: "طالب علوم حاسب",
                 btnText: "تواصل معي عبر LinkedIn",
                 aboutHeading: "نبذة عني",
-                aboutDesc: "طالب طموح في مرحلة البكالوريوس تخصص علوم الحاسب بجامعة شقراء. شغوف بحل المشكلات وبناء الحلول الرقمية، لدي خلفية برمجية في لغة بايثون بالإضافة إلى تطوير وتصميم تطبيقات الويب الحديثة. أسعى دائماً لتطوير مهاراتي واكتساب شهادات احترافية تدعم مسيرتي المهنية.",
+                aboutDesc: "طالب طموح في مرحلة البكالوريوس تخصص علوم الحاسب بجامعة شقراء. شغوف بحل المشكلات وبناء الحلول الرقمية، لدي خلفية برمجية في لغة بايثون بالإضافة إلى تطوير وتصميم تطبيقات الويب الحديثة.",
                 badgesHeading: "الشهادات والشارات",
                 langBtn: "English",
                 location: "📍 جامعة شقراء"
@@ -294,13 +315,8 @@
 
         themeToggle.addEventListener('click', () => {
             const isDark = html.getAttribute('data-theme') === 'dark';
-            if (isDark) {
-                html.removeAttribute('data-theme');
-                themeToggle.innerHTML = '🌙 Dark Mode';
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                themeToggle.innerHTML = '☀️ Light Mode';
-            }
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerHTML = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
         });
 
         let currentLang = 'en';
@@ -312,13 +328,10 @@
         });
 
         function updateLanguage(lang) {
-            document.getElementById('name').innerText = translations[lang].name;
-            document.getElementById('title').innerText = translations[lang].title;
-            document.getElementById('btn-text').innerText = translations[lang].btnText;
-            document.getElementById('about-heading').innerText = translations[lang].aboutHeading;
-            document.getElementById('about-desc').innerText = translations[lang].aboutDesc;
-            document.getElementById('badges-heading').innerText = translations[lang].badgesHeading;
-            document.getElementById('location').innerText = translations[lang].location;
+            Object.keys(translations[lang]).forEach(key => {
+                const el = document.getElementById(key.replace(/[A-Z]/g, m => "-" + m.toLowerCase()));
+                if(el) el.innerText = translations[lang][key];
+            });
             langToggle.innerText = translations[lang].langBtn;
         }
     </script>
