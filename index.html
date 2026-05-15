@@ -17,7 +17,7 @@
             --text-main: #2d3436;
             --text-muted: #636e72;
             --accent: #6c5ce7;
-            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-border: rgba(108, 92, 231, 0.2); /* برواز ناعم بلون الأكسنت للويت مود */
             --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
         }
 
@@ -45,7 +45,6 @@
             min-height: 100vh;
         }
 
-        /* Decorative Background Orbs */
         .orb {
             position: fixed;
             width: 300px;
@@ -103,13 +102,12 @@
         .profile-card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
+            border: 2px solid var(--glass-border); /* برواز أوضح قليلاً للبطاقة الشخصية */
             border-radius: 30px;
             padding: 50px 30px;
             text-align: center;
             box-shadow: var(--shadow);
             margin-bottom: 40px;
-            position: relative;
         }
 
         .profile-img {
@@ -159,7 +157,7 @@
             border-radius: 25px;
             padding: 40px;
             margin-bottom: 30px;
-            border: 1px solid var(--glass-border);
+            border: 2px solid var(--glass-border); /* برواز للسكشنات */
             box-shadow: var(--shadow);
         }
 
@@ -179,7 +177,6 @@
             border-radius: 10px;
         }
 
-        /* --- الحل المطور للشهادات والدارك مود --- */
         .badges-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -188,10 +185,10 @@
         }
 
         .badge-container {
-            background: #ffffff; /* خلفية بيضاء لضمان وضوح الشهادة في اللايت مود */
+            background: #ffffff;
             padding: 20px;
             border-radius: 20px;
-            border: 1px solid var(--glass-border);
+            border: 2px solid var(--glass-border); /* برواز لحاوية الشهادة */
             text-align: center;
             transition: 0.3s;
             display: flex;
@@ -200,10 +197,9 @@
             min-height: 310px;
         }
 
-        /* تعديل الشهادات في الدارك مود لمنع ظهور المربع الأبيض */
         [data-theme="dark"] .badge-container {
-            background: #1e293b !important; /* لون داكن يتناسب مع الثيم الجديد */
-            border-color: var(--primary);
+            background: #1e293b !important;
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="dark"] .badge-container iframe,
@@ -211,7 +207,6 @@
             filter: invert(0.9) hue-rotate(180deg) !important;
             mix-blend-mode: screen;
         }
-        /* --- نهاية تعديل الشهادات --- */
 
         .phone-wrapper { unicode-bidi: isolate; direction: ltr !important; display: inline-block; }
 
