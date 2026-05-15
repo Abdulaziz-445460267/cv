@@ -88,12 +88,6 @@
             transition: 0.3s;
         }
 
-        .btn-toggle:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-
         .container {
             max-width: 800px;
             margin: 40px auto;
@@ -109,7 +103,6 @@
         .profile-card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 50px 30px;
@@ -117,7 +110,6 @@
             box-shadow: var(--shadow);
             margin-bottom: 40px;
             position: relative;
-            overflow: hidden;
         }
 
         .profile-img {
@@ -128,11 +120,6 @@
             padding: 5px;
             background: linear-gradient(45deg, var(--primary), var(--accent));
             margin-bottom: 25px;
-            transition: 0.5s;
-        }
-
-        .profile-img:hover {
-            transform: rotate(5deg) scale(1.05);
         }
 
         .profile-name {
@@ -163,13 +150,7 @@
             padding: 15px 35px;
             border-radius: 50px;
             font-weight: 600;
-            transition: 0.3s;
             box-shadow: 0 10px 20px rgba(0, 119, 181, 0.2);
-        }
-
-        .btn-linkedin:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 25px rgba(0, 119, 181, 0.3);
         }
 
         .section {
@@ -180,11 +161,6 @@
             margin-bottom: 30px;
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
-            transition: 0.3s;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
         }
 
         .section-title {
@@ -203,6 +179,7 @@
             border-radius: 10px;
         }
 
+        /* --- الحل المطور للشهادات والدارك مود --- */
         .badges-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -211,25 +188,35 @@
         }
 
         .badge-container {
-            background: rgba(255,255,255,0.05);
+            background: #ffffff; /* خلفية بيضاء لضمان وضوح الشهادة في اللايت مود */
             padding: 20px;
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             text-align: center;
             transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 310px;
         }
 
-        .badge-container:hover {
-            background: rgba(255,255,255,0.1);
+        /* تعديل الشهادات في الدارك مود لمنع ظهور المربع الأبيض */
+        [data-theme="dark"] .badge-container {
+            background: #1e293b !important; /* لون داكن يتناسب مع الثيم الجديد */
             border-color: var(--primary);
         }
 
-        /* Animation for icons */
+        [data-theme="dark"] .badge-container iframe,
+        [data-theme="dark"] .badge-container div[data-share-badge-id] {
+            filter: invert(0.9) hue-rotate(180deg) !important;
+            mix-blend-mode: screen;
+        }
+        /* --- نهاية تعديل الشهادات --- */
+
         .phone-wrapper { unicode-bidi: isolate; direction: ltr !important; display: inline-block; }
 
         @media (max-width: 600px) {
             .profile-name { font-size: 1.8rem; }
-            .container { margin-top: 20px; }
         }
     </style>
 </head>
