@@ -181,21 +181,26 @@
             flex-wrap: wrap;
         }
 
+        /* هذا هو الكود الذي يحل مشكلة الخلفية في الدارك مود */
         .badge-container {
-            /* Force white background so the iframe content looks clean */
             background-color: #ffffff !important; 
             padding: 15px;
             border-radius: 16px;
             border: 1px solid #ddd;
-            transition: transform 0.3s ease;
+            width: 180px;
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 180px;
-            height: 300px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* ظل لتمييز البطاقة */
         }
-
+        
+        /* لضمان بقاء الخلفية بيضاء حتى لو فعلت الدارك مود */
+        [data-theme="dark"] .badge-container {
+            background-color: #ffffff !important; 
+            border-color: #444;
+        }
+        
         .badge-container:hover {
             transform: translateY(-5px);
         }
