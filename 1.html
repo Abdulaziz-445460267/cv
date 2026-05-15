@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CV / سيرتي الذاتية</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* زر تغيير اللغة */
+        .lang-switch-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .btn-lang {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-lang:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* الهيدر والصورة الشخصية */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* الأقسام العامة */
+        section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* شبكة الشهادات وشارات Credly */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
+            justify-items: center;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #eef2f5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* زر لينكد إن */
+        .linkedin-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-linkedin {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0077b5;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 119, 181, 0.3);
+        }
+
+        .btn-linkedin:hover {
+            background-color: #005582;
+            transform: translateY(-2px);
+        }
+
+        /* لدعم الاتجاه من اليمين لليسار (العربي) */
+        html[dir="rtl"] body {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- زر تغيير اللغة -->
+        <div class="lang-switch-container">
+            <button class="btn-lang" id="langBtn" onclick="toggleLanguage()">العربية</button>
+        </div>
+
+        <!-- الهيدر (الصورة والاسم) -->
+        <header>
+            <!-- ضع صورتك في نفس المجلد وسمّها profile.jpg أو استبدلها برابط متاح -->
+            <img src="profile.jpg" alt="Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+            <h1 id="name">John Doe</h1>
+            <p id="title">Software Engineer & Developer</p>
+        </header>
+
+        <!-- قسم النبذة الشخصية -->
+        <section>
+            <h2 id="aboutTitle">About Me</h2>
+            <p id="aboutText">I am a passionate developer with experience in building clean, functional, and user-friendly web applications using modern web technologies.</p>
+        </section>
+
+        <!-- قسم الشهادات والباجات الرسمية -->
+        <section>
+            <h2 id="certTitle">Certificates & Badges</h2>
+            <div class="grid-container">
+                
+                <!-- الباج الأول من Credly -->
+                <div class="card">
+                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="1b12629b-7129-47bf-ac55-a580d6a2a1b2" data-share-badge-host="https://www.credly.com"></div>
+                </div>
+
+                <!-- الباج الثاني من Credly -->
+                <div class="card">
+                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3571221e-09dd-42c2-b8a3-49910fb3dee0" data-share-badge-host="https://www.credly.com"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- قسم زر لينكد إن -->
+        <div class="linkedin-container">
+            <!-- استبدل الرابط أدناه برابط حسابك الحقيقي على لينكد إن -->
+            <a href="https://www.linkedin.com" target="_blank" class="btn-linkedin" id="linkedinBtn">
+                Connect on LinkedIn
+            </a>
+        </div>
+
+    </div>
+
+    <!-- كود جلب باجات Credly وتفعيلها تلقائياً -->
+    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+    <!-- كود تبديل اللغة والبيانات الشخصية -->
+    <script>
+        const translations = {
+            en: {
+                dir: "ltr",
+                lang: "en",
+                btnText: "العربية",
+                name: "John Doe", // اكتب اسمك بالإنجليزي هنا
+                title: "Software Engineer", // تخصصك بالإنجليزي
+                aboutTitle: "About Me",
+                aboutText: "I am a passionate developer with experience in building clean, functional, and user-friendly web applications using modern web technologies.",
+                certTitle: "Certificates & Badges",
+                linkedinBtn: "Connect on LinkedIn"
+            },
+            ar: {
+                dir: "rtl",
+                lang: "ar",
+                btnText: "English",
+                name: "اسمك الكريم هنا", // اكتب اسمك بالعربي هنا
+                title: "مطور برمجيات / تخصصك هنا", // تخصصك بالعربي
+                aboutTitle: "نبذة عني",
+                aboutText: "مطور شغوف متخصص في بناء وتطوير المواقع والتطبيقات الإلكترونية واجهات مستخدم متميزة وأداء عالي الفعالية.",
+                certTitle: "الشهادات والشارات الرقمية",
+                linkedinBtn: "تواصل معي عبر لينكد إن"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const data = translations[currentLang];
+
+            // تحديث اتجاه الصفحة واللغة
+            document.documentElement.dir = data.dir;
+            document.documentElement.lang = data.lang;
+
+            // تحديث النصوص
+            document.getElementById('langBtn').innerText = data.btnText;
+            document.getElementById('name').innerText = data.name;
+            document.getElementById('title').innerText = data.title;
+            document.getElementById('aboutTitle').innerText = data.aboutTitle;
+            document.getElementById('aboutText').innerText = data.aboutText;
+            document.getElementById('certTitle').innerText = data.certTitle;
+            document.getElementById('linkedinBtn').innerText = data.linkedinBtn;
+        }
+    </script>
+</body>
+</html>
